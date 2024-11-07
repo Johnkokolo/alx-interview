@@ -1,26 +1,25 @@
 def pascal_triangle(n):
     """
-    Returns a list of lists representing the Pascal's triangle of n.
+    Returns a list of lists of integers representing Pascal's Triangle of size n.
+
+    Args:
+        n (int): The size of Pascal's Triangle.
+
+    Returns:
+        list: A list of lists of integers representing Pascal's Triangle.
     """
     if n <= 0:
         return []
 
-    # Initialize Pascal's triangle with the first row
-    triangle = [[1]]
+    triangle = [[1]]  # Initialize with first row
 
     for i in range(1, n):
-        # Start the row with 1
-        row = [1]
-        # Get the previous row from the triangle
-        prev_row = triangle[i - 1]
-
-        # Each element in the row is the sum of the two elements above it
+        row = [1]  # Start with 1
         for j in range(1, i):
-            row.append(prev_row[j - 1] + prev_row[j])
-
-        # End the row with 1
-        row.append(1)
-        # Add the row to the triangle
+            # Calculate middle elements as sum of two elements directly above
+            row.append(triangle[i-1][j-1] + triangle[i-1][j])
+        row.append(1)  # End with 1
         triangle.append(row)
 
     return triangle
+
