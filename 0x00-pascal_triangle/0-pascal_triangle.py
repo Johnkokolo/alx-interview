@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""
+0-main
+"""
+pascal_triangle = __import__('0-pascal_triangle').pascal_triangle
 def pascal_triangle(n):
     """
     Returns a list of lists of integers representing Pascal's Triangle of size n.
