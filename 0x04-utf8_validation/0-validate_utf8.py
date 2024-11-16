@@ -1,7 +1,5 @@
-#!/usr/bin/python3
-"""
-Main file for testing
-"""
+#!/usr/bin/python
+
 
 def validUTF8(data):
     # This variable will track the number of continuation bytes we expect
