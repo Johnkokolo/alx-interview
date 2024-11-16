@@ -1,25 +1,24 @@
 #!/usr/bin/python3
 
+canUnlockAll = __import__('0-lockboxes').canUnlockAll
+
 def canUnlockAll(boxes):
-    """
-    Determines if all boxes can be opened.
-
-    Parameters:
-    boxes (list of lists): List of boxes, where each box contains keys to other boxes.
-
-    Returns:
-    bool: True if all boxes can be opened, False otherwise.
-    """
-    n = len(boxes)
-    unlocked = {0}  # Start with the first box unlocked
-    keys = [0]      # Stack of boxes to explore, starting with box 0
-
-    while keys:
-        current_box = keys.pop()  # Take a box to explore its keys
+    # The list of unlocked boxes, starting with box 0 unlocked
+    unlocked = [False] * len(boxes)
+    unlocked[0] = True
+    
+    # We can use a stack or queue for DFS or BFS
+    # Use a stack (for DFS) initialized with box 0
+    stack = [0]
+    
+    while stack:
+        current_box = stack.pop()
+        
+        # Explore all keys in the current box
         for key in boxes[current_box]:
-            if key not in unlocked and key < n:  # If we haven't unlocked this box and it's a valid box
-                unlocked.add(key)               # Unlock it
-                keys.append(key)                # Add to the stack to explore its keys
-
-    # If the number of unlocked boxes equals the total number of boxes, return True
-    return len(unlocked) == n
+            if key < len(boxes) and not unlocked[key]:
+                unlocked[key] = True
+                stack.append(key)
+    
+    # Check if all boxes are unlocked
+    return all(unlocked)
