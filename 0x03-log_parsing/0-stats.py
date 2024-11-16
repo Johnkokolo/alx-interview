@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 import random
 import sys
-import re
+from time import sleep
+import datetime
 
 def process_log_line(line):
     """
