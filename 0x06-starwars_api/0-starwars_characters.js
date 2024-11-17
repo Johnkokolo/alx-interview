@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-"""
-Main file for testing
-"""
 
 import sys
 import requests
